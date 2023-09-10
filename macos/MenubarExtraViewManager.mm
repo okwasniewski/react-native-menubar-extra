@@ -1,7 +1,6 @@
 #import <React/RCTViewManager.h>
 #import <React/RCTUIManager.h>
 #import "RCTBridge.h"
-#import "Utils.h"
 
 @interface MenubarExtraViewManager : RCTViewManager
 @end
@@ -10,14 +9,14 @@
 
 RCT_EXPORT_MODULE(MenubarExtraView)
 
-- (UIView *)view
+- (NSView *)view
 {
-  return [[UIView alloc] init];
+  return [[NSView alloc] init];
 }
 
-RCT_CUSTOM_VIEW_PROPERTY(color, NSString, UIView)
+RCT_CUSTOM_VIEW_PROPERTY(color, NSString, NSView)
 {
-  [view setBackgroundColor: [Utils hexStringToColor:json]];
+//  [view setBackgroundColor: [Utils hexStringToColor:json]];
 }
 
 @end

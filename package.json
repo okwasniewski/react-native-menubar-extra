@@ -81,7 +81,8 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-macos": "*"
   },
   "engines": {
     "node": ">= 16.0.0"

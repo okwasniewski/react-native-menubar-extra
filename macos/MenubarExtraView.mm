@@ -7,7 +7,6 @@
 #import <react/renderer/components/RNMenubarExtraViewSpec/RCTComponentViewHelpers.h>
 
 #import "RCTFabricComponentsPlugins.h"
-#import "Utils.h"
 
 using namespace facebook::react;
 

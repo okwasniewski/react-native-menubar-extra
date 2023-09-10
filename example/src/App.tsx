@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { MenubarExtraView } from 'react-native-menubar-extra';
 
 export default function App() {
   return (
     <View style={styles.container}>
+      <Text>Hey!</Text>
       <MenubarExtraView color="#32a852" style={styles.box} />
     </View>
   );
