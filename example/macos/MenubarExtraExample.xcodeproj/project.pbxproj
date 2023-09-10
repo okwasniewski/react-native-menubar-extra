@@ -64,7 +64,6 @@
 				04734D330F76699D6E463869 /* Pods-MenubarExtraExample-macOS.debug.xcconfig */,
 				385CAC1542AFA48B1E061D6F /* Pods-MenubarExtraExample-macOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -404,7 +403,7 @@
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = "MenubarExtraExample-macos/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -424,7 +423,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "MenubarExtraExample-macos/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

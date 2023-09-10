@@ -1,13 +1,24 @@
 import * as React from 'react';
 
-import { StyleSheet, Text, View } from 'react-native';
-import { MenubarExtraView } from 'react-native-menubar-extra';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import MenuBarExtra from 'react-native-menubar-extra';
 
 export default function App() {
+  const [count, setCount] = React.useState(0);
   return (
     <View style={styles.container}>
-      <Text>Hey!</Text>
-      <MenubarExtraView color="#32a852" style={styles.box} />
+      <TouchableOpacity
+        onPress={() => {
+          setCount((prev) => prev + 1);
+        }}
+      >
+        <Text>Increment!</Text>
+      </TouchableOpacity>
+      <MenuBarExtra.View icon={`${count}.square`}>
+        <MenuBarExtra.Item title="Hey" icon="iphone" />
+        <MenuBarExtra.Item title="Unseen" isSeparator />
+        <MenuBarExtra.Item title="Hey 2" icon="1.square" />
+      </MenuBarExtra.View>
     </View>
   );
 }
