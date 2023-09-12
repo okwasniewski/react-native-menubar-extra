@@ -468,7 +468,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: a56038095018e034629b89bf4bc6111016819af1
   React-jsinspector: 2467e42b264a2b661e67e238eec6c5103d72be96
   React-logger: 133cc77ea521b22baf92f1f4b035fdeadba5d115
-  react-native-menubar-extra: 3fb4a6b5938a9bb3bce8a420e1c69704be4b16ee
+  react-native-menubar-extra: 85333a732a93e301cb30e8e144a20063b449fb73
   React-perflogger: c07d03caeff878a70ff008bc41c70ca14aa33ab6
   React-RCTActionSheet: 3b6cd9236dc91e38526a0c2de962aa6030bce2b6
   React-RCTAnimation: 03050467b33c3e97c521efb365e8777381d006b1
@@ -485,6 +485,6 @@ SPEC CHECKSUMS:
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Yoga: dbe974971e53d9273cfad741be27682a36f18652
 
-PODFILE CHECKSUM: 5669bbf94ccb26e859c5eaafebe7a8cd97899b76
+PODFILE CHECKSUM: 816bb825def8decdfe69e7d027c18282e78a6ed5
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

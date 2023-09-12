@@ -11,11 +11,11 @@
     "src",
     "lib",
     "android",
-    "ios",
+    "macos",
     "cpp",
     "*.podspec",
     "!lib/typescript/example",
-    "!ios/build",
+    "!macos/build",
     "!android/build",
     "!android/gradle",
     "!android/gradlew",
@@ -34,13 +34,13 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "build:android": "cd example/android && ./gradlew assembleDebug --no-daemon --console=plain -PreactNativeArchitectures=arm64-v8a",
-    "build:ios": "cd example/ios && xcodebuild -workspace MenubarExtraExample.xcworkspace -scheme MenubarExtraExample -configuration Debug -sdk iphonesimulator CC=clang CPLUSPLUS=clang++ LD=clang LDPLUSPLUS=clang++ GCC_OPTIMIZATION_LEVEL=0 GCC_PRECOMPILE_PREFIX_HEADER=YES ASSETCATALOG_COMPILER_OPTIMIZATION=time DEBUG_INFORMATION_FORMAT=dwarf COMPILER_INDEX_STORE_ENABLE=NO",
+    "build:macos": "cd example/macos && xcodebuild -workspace MenubarExtraExample.xcworkspace -scheme MenubarExtraExample-macOS -configuration Debug CC=clang CPLUSPLUS=clang++ LD=clang LDPLUSPLUS=clang++ GCC_OPTIMIZATION_LEVEL=0 GCC_PRECOMPILE_PREFIX_HEADER=YES ASSETCATALOG_COMPILER_OPTIMIZATION=time DEBUG_INFORMATION_FORMAT=dwarf COMPILER_INDEX_STORE_ENABLE=NO",
     "bootstrap": "yarn example && yarn install && yarn example pods",
-    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build"
+    "clean": "del-cli android/build example/android/build example/android/app/build example/macos/build"
   },
   "keywords": [
     "react-native",
-    "ios",
+    "macos",
     "android"
   ],
   "repository": "https://github.com/okwasniewski/react-native-menubar-extra",
@@ -54,14 +54,12 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^17.0.2",
     "@evilmartians/lefthook": "^1.2.2",
     "@react-native-community/eslint-config": "^3.0.2",
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^28.1.2",
     "@types/react": "~17.0.21",
     "@types/react-native": "0.70.0",
-    "commitlint": "^17.0.2",
     "del-cli": "^5.0.0",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.5.0",

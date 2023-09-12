@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import MenuBarExtra from 'react-native-menubar-extra';
+import { MenuBarExtraItem, MenubarExtraView } from 'react-native-menubar-extra';
 
 export default function App() {
   const [count, setCount] = React.useState(0);
@@ -14,11 +14,11 @@ export default function App() {
       >
         <Text>Increment!</Text>
       </TouchableOpacity>
-      <MenuBarExtra.View icon={`${count}.square`}>
-        <MenuBarExtra.Item title="Hey" icon="iphone" />
-        <MenuBarExtra.Item title="Unseen" isSeparator />
-        <MenuBarExtra.Item title="Hey 2" icon="1.square" />
-      </MenuBarExtra.View>
+      <MenubarExtraView icon={`${count}.square`}>
+        <MenuBarExtraItem title="Hey" icon="iphone" />
+        <MenuBarExtraItem title="Unseen" isSeparator />
+        <MenuBarExtraItem title="Hey 2" icon="1.square" />
+      </MenubarExtraView>
     </View>
   );
 }

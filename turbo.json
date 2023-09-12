@@ -1,7 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
-    "build:ios": {
+    "build:macos": {
       "inputs": [
         "package.json",
         "*.podspec",
