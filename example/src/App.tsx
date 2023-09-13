@@ -3,23 +3,51 @@ import * as React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { MenuBarExtraItem, MenubarExtraView } from 'react-native-menubar-extra';
 
-export default function App() {
-  const [count, setCount] = React.useState(0);
+const MenuBar = () => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => {
-          setCount((prev) => prev + 1);
+    <MenubarExtraView icon="car">
+      <MenuBarExtraItem
+        title="First item"
+        icon="paperplane"
+        onItemPress={() => {
+          console.log('First item');
         }}
       >
-        <Text>Increment!</Text>
-      </TouchableOpacity>
-      <MenubarExtraView icon={`${count}.square`}>
-        <MenuBarExtraItem title="Hey" icon="iphone" />
-        <MenuBarExtraItem title="Unseen" isSeparator />
-        <MenuBarExtraItem title="Hey 2" icon="1.square" />
-      </MenubarExtraView>
-    </View>
+        <MenuBarExtraItem title="First subitem">
+          <MenuBarExtraItem
+            title="Second subitem"
+            onItemPress={() => {
+              console.log('Second subitem');
+            }}
+          />
+        </MenuBarExtraItem>
+      </MenuBarExtraItem>
+      <MenuBarExtraItem
+        title="Second item"
+        icon="eraser"
+        onItemPress={() => console.log('Second item')}
+      />
+      <MenuBarExtraItem title="Third item" icon="pencil" />
+      <MenuBarExtraItem title="Fourth item" icon="trash" />
+      <MenuBarExtraItem
+        title="Fifth item"
+        icon="tray.fill"
+        onItemPress={() => console.log('Fifth item')}
+      />
+    </MenubarExtraView>
+  );
+};
+
+export default function App() {
+  return (
+    <>
+      <MenuBar />
+      <View style={styles.container}>
+        <TouchableOpacity onPress={() => {}}>
+          <Text>Increment!</Text>
+        </TouchableOpacity>
+      </View>
+    </>
   );
 }
 

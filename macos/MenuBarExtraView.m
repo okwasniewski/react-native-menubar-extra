@@ -24,12 +24,10 @@
 
 - (void)updateIcon:(NSString *) symbolName {
     if (self.statusBarItem.button) {
-        self.statusBarItem.button.image = [NSImage imageWithSystemSymbolName:symbolName accessibilityDescription:nil];
+        if (@available(macOS 11.0, *)) {
+            self.statusBarItem.button.image = [NSImage imageWithSystemSymbolName:symbolName accessibilityDescription:nil];
+        }
     }
-}
-
-- (void)handleClick {
-    NSLog(@"Clicked");
 }
 
 - (void)didSetProps:(NSArray<NSString *> *)changedProps {
