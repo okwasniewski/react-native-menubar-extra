@@ -1,7 +1,11 @@
 import * as React from 'react';
 
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { MenuBarExtraItem, MenubarExtraView } from 'react-native-menubar-extra';
+import {
+  MenuBarExtraItem,
+  MenuBarExtraSeparator,
+  MenubarExtraView,
+} from 'react-native-menubar-extra';
 
 const MenuBar = () => {
   return (
@@ -22,11 +26,13 @@ const MenuBar = () => {
           />
         </MenuBarExtraItem>
       </MenuBarExtraItem>
+      <MenuBarExtraSeparator />
       <MenuBarExtraItem
         title="Second item"
         icon="eraser"
         onItemPress={() => console.log('Second item')}
       />
+      <MenuBarExtraSeparator />
       <MenuBarExtraItem title="Third item" icon="pencil" />
       <MenuBarExtraItem title="Fourth item" icon="trash" />
       <MenuBarExtraItem

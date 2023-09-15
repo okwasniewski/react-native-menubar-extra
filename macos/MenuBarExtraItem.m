@@ -1,7 +1,7 @@
 #import "MenuBarExtraItem.h"
 #import "MenuBarOnPressEvent.h"
 
-@interface MenuBarExtraItem ()
+@interface MenuBarExtraItem () <MenuBarItemProtocol>
 @property(nonatomic, strong) id<RCTEventDispatcherProtocol> eventDispatcher;
 @end
 
@@ -10,8 +10,7 @@
 - (instancetype)initWithEventDispatcher:(RCTEventDispatcher *)eventDispatcher {
     if (self = [super init]) {
         _eventDispatcher = eventDispatcher;
-        
-        self.menuItem = [[NSMenuItem alloc] init];
+        _menuItem = [[NSMenuItem alloc] init];
     }
     
     return self;
@@ -19,51 +18,60 @@
 
 - (void)didSetProps:(NSArray<NSString *> *)changedProps {
     if ([changedProps containsObject:@"onItemPress"]) {
-        self.menuItem.target = self;
-        self.menuItem.action = @selector(handleClick);
+        _menuItem.target = self;
+        _menuItem.action = @selector(handleClick);
     }
     if ([changedProps containsObject:@"title"]) {
-        self.menuItem.title = self.title;
+        _menuItem.title = _title;
     }
     if ([changedProps containsObject:@"icon"]) {
         if (@available(macOS 11.0, *)) {
-            self.menuItem.image = [NSImage imageWithSystemSymbolName:self.icon accessibilityDescription:@""];
+            _menuItem.image = [NSImage imageWithSystemSymbolName:_icon accessibilityDescription:@""];
         }
     }
 }
 
+
 - (void)handleClick {
-    [self.eventDispatcher sendEvent:[[MenuBarOnPressEvent alloc] initWithReactTag:self.reactTag]];
+    [_eventDispatcher sendEvent:[[MenuBarOnPressEvent alloc] initWithReactTag:self.reactTag]];
 }
 
 - (void)insertReactSubview:(NSView *)subview atIndex:(NSInteger)atIndex {
     [super insertReactSubview:subview atIndex:atIndex];
-   
-    if (self.menuItem.submenu == nil) {
-        self.menuItem.submenu = [[NSMenu alloc] init];
+    
+    if (_menuItem.submenu == nil) {
+        _menuItem.submenu = [[NSMenu alloc] init];
     }
-
-    if ([subview isKindOfClass:self.class]) {
-        MenuBarExtraItem *subItem = (MenuBarExtraItem*)subview;
-        [self.menuItem.submenu addItem:subItem.menuItem];
+    
+    if ([subview conformsToProtocol:@protocol(MenuBarItemProtocol)]) {
+        id<MenuBarItemProtocol> item = (id<MenuBarItemProtocol>)subview;
+        NSMenuItem *menuItem = [item getItem];
+        
+        [_menuItem.submenu insertItem:menuItem atIndex:atIndex];
     }
 }
 
 - (void)removeReactSubview:(NSView *)subview {
-    if (![subview isKindOfClass:self.class]) {
+    [super removeReactSubview:subview];
+    
+    if (![subview conformsToProtocol:@protocol(MenuBarItemProtocol)]) {
         return;
     }
     
-    MenuBarExtraItem *subItem = (MenuBarExtraItem*)subview;
+    id<MenuBarItemProtocol> item = (id<MenuBarItemProtocol>)subview;
+    NSMenuItem *menuItem = [item getItem];
     
-    if (self.menuItem.submenu) {
-        [self.menuItem.submenu removeItem:subItem.menuItem];
+    if (_menuItem.submenu) {
+        [_menuItem.submenu removeItem:menuItem];
     }
     
-    if (self.menuItem.submenu.numberOfItems == 0) {
-        self.menuItem.submenu = nil;
+    if (_menuItem.submenu.numberOfItems == 0) {
+        _menuItem.submenu = nil;
     }
-    [super removeReactSubview:subview];
+}
+
+- (NSMenuItem*)getItem {
+    return _menuItem;
 }
 
 @end

@@ -10,11 +10,11 @@
 
 RCT_EXPORT_MODULE(MenubarExtraView)
 
+RCT_EXPORT_VIEW_PROPERTY(icon, NSString)
+
 - (NSView *)view
 {
   return [[MenuBarExtraView alloc] init];
 }
-
-RCT_EXPORT_VIEW_PROPERTY(icon, NSString)
 
 @end
