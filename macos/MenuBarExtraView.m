@@ -1,5 +1,5 @@
 #import "MenuBarExtraView.h"
-#import "MenuBarExtraItem.h"
+#import "MenuBarItemProtocol.h"
 
 @interface MenuBarExtraView ()
 
@@ -13,19 +13,23 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.statusBarItem = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
+        _statusBarItem = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
         [self updateIcon:self.icon];
-        self.rootMenu = [[NSMenu alloc] init];
-        self.statusBarItem.menu = self.rootMenu;
+        _rootMenu = [[NSMenu alloc] init];
+        
+        _statusBarItem.menu = _rootMenu;
     }
     
     return self;
 }
 
 - (void)updateIcon:(NSString *) symbolName {
-    if (self.statusBarItem.button) {
+    if (_statusBarItem.button) {
         if (@available(macOS 11.0, *)) {
-            self.statusBarItem.button.image = [NSImage imageWithSystemSymbolName:symbolName accessibilityDescription:nil];
+            [self.menu insertItem:[NSMenuItem separatorItem] atIndex:1];
+            NSImage *image = [NSImage imageWithSystemSymbolName:symbolName accessibilityDescription:nil];
+            image.template = YES;
+            _statusBarItem.button.image = image;
         }
     }
 }
@@ -39,28 +43,31 @@
 - (void)insertReactSubview:(NSView *)subview atIndex:(NSInteger)atIndex {
     [super insertReactSubview:subview atIndex:atIndex];
     
-    if ([subview isKindOfClass:MenuBarExtraItem.class]) {
-        MenuBarExtraItem* item = (MenuBarExtraItem*)subview;
-        if (item.menuItem != nil) {
-            [self.rootMenu addItem:item.menuItem];
+    if ([subview conformsToProtocol:@protocol(MenuBarItemProtocol)]) {
+        id<MenuBarItemProtocol> item = (id<MenuBarItemProtocol>)subview;
+        NSMenuItem *menuItem = [item getItem];
+        if (menuItem) {
+            [_rootMenu insertItem:menuItem atIndex:atIndex];
         }
     }
 }
 
 - (void)didUpdateReactSubviews {
     for (NSView *subview in self.reactSubviews) {
-        if ([subview isKindOfClass:MenuBarExtraItem.class]) {
-            MenuBarExtraItem* item = (MenuBarExtraItem*)subview;
-            [self.rootMenu itemChanged:item.menuItem];
+        if ([subview conformsToProtocol:@protocol(MenuBarItemProtocol)]) {
+            id<MenuBarItemProtocol> item = (id<MenuBarItemProtocol>)subview;
+            NSMenuItem *menuItem = [item getItem];
+            [_rootMenu itemChanged:menuItem];
         }
     }
 }
 
 - (void)removeReactSubview:(NSView *)subview {
     [super removeReactSubview:subview];
-    if ([subview isKindOfClass:MenuBarExtraItem.class]) {
-        MenuBarExtraItem* item = (MenuBarExtraItem*)subview;
-        [self.rootMenu removeItem:item.menuItem];
+    if ([subview conformsToProtocol:@protocol(MenuBarItemProtocol)]) {
+        id<MenuBarItemProtocol> item = (id<MenuBarItemProtocol>)subview;
+        NSMenuItem *menuItem = [item getItem];
+        [_rootMenu removeItem:menuItem];
     }
 }
 
