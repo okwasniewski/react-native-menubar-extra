@@ -1,7 +1,7 @@
 #import <AppKit/AppKit.h>
+#import "MenuBarItemProtocol.h"
 #import <React/UIView+React.h>
 #import <React/RCTEventDispatcher.h>
-#import "MenuBarItemProtocol.h"
 
 @interface MenuBarExtraItem : RCTPlatformView
 
@@ -13,3 +13,4 @@
 @property(nonatomic, copy) RCTDirectEventBlock onItemPress;
 
 @end
+

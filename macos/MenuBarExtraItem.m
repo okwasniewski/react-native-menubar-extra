@@ -1,3 +1,5 @@
+#ifndef RCT_NEW_ARCH_ENABLED
+
 #import "MenuBarExtraItem.h"
 #import "MenuBarOnPressEvent.h"
 
@@ -80,3 +82,5 @@
 }
 
 @end
+
+#endif

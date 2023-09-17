@@ -5,7 +5,6 @@ import type { DirectEventHandler } from 'react-native/Libraries/Types/CodegenTyp
 interface NativeProps extends ViewProps {
   title?: string;
   icon?: string;
-  isSeparator?: boolean;
   onItemPress?: DirectEventHandler<undefined>;
 }
 
