@@ -18,8 +18,13 @@
 
 - (void)didSetProps:(NSArray<NSString *> *)changedProps {
     if ([changedProps containsObject:@"onItemPress"]) {
-        _menuItem.target = self;
-        _menuItem.action = @selector(handleClick);
+        if (_onItemPress) {
+            _menuItem.target = self;
+            _menuItem.action = @selector(handleClick);
+        } else {
+            _menuItem.target = nil;
+            _menuItem.action = nil;
+        }
     }
     if ([changedProps containsObject:@"title"]) {
         _menuItem.title = _title;

@@ -27,7 +27,9 @@
     if (_statusBarItem.button) {
         if (@available(macOS 11.0, *)) {
             [self.menu insertItem:[NSMenuItem separatorItem] atIndex:1];
-            _statusBarItem.button.image = [NSImage imageWithSystemSymbolName:symbolName accessibilityDescription:nil];
+            NSImage *image = [NSImage imageWithSystemSymbolName:symbolName accessibilityDescription:nil];
+            image.template = YES;
+            _statusBarItem.button.image = image;
         }
     }
 }
