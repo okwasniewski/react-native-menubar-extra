@@ -22,31 +22,19 @@ To start the packager:
 yarn example start
 ```
 
-To run the example app on Android:
+To run the example app on MacOS:
 
 ```sh
-yarn example android
-```
-
-To run the example app on iOS:
-
-```sh
-yarn example ios
+yarn example macos
 ```
 
 By default, the example is configured to build with the old architecture. To run the example with the new architecture, you can do the following:
 
-1. For Android, run:
-
-   ```sh
-   ORG_GRADLE_PROJECT_newArchEnabled=true yarn example android
-   ```
-
-2. For iOS, run:
+2. For MacOS, run:
 
    ```sh
    RCT_NEW_ARCH_ENABLED=1 yarn example pods
-   yarn example ios
+   yarn example macos
    ```
 
 If you are building for a different architecture than your previous build, make sure to remove the build folders first. You can run the following command to cleanup all build folders:
@@ -82,10 +70,7 @@ Remember to add tests for your change if possible. Run the unit tests by:
 yarn test
 ```
 
-To edit the Objective-C or Swift files, open `example/ios/MenubarExtraExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > react-native-menubar-extra`.
-
-To edit the Java or Kotlin files, open `example/android` in Android studio and find the source files at `react-native-menubar-extra` under `Android`.
-
+To edit the Objective-C or Swift files, open `example/macos/MenubarExtraExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > react-native-menubar-extra`.
 
 ### Commit message convention
 

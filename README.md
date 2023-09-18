@@ -6,6 +6,9 @@ Easily add native menubar (`NSMenu`) to your React Native MacOS App.
   <img src="img/example-usage.png" alt="ViewPager" width="450">
 </p>
 
+> [!WARNING]
+> This library supports only [react-native-macos](https://github.com/microsoft/react-native-macos#readme)
+
 ## Installation
 
 ```sh
@@ -15,7 +18,7 @@ npm install react-native-menubar-extra
 ```
 
 ```sh
-cd ios && pod install
+cd macos && pod install
 ```
 
 ## Usage
@@ -37,6 +40,8 @@ const MenuBar = () => {
 };
 ```
 
+For more advanced example check out the [example](https://github.com/okwasniewski/react-native-menubar-extra/tree/main/example) folder.
+
 ## Reference
 
 ### `MenuBarExtraView`
@@ -55,7 +60,7 @@ Container view that sets up root menu.
 | ------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `title`       | The menu item's title                                                                                              |
 | `icon`        | Name of [SF Symbol](https://developer.apple.com/sf-symbols/) as string that will be rendered next to item's title. |
-| `onItemClick` | Callback that will be called after clicking on menu item.                                                          |
+| `onItemClick` | Callback that is called after clicking on menu item.                                                               |
 
 ### `MenuBarExtraSeparator`
 
