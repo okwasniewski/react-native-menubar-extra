@@ -16,7 +16,7 @@ interface NativeProps extends ViewProps {
    */
   icon?: string;
   /**
-   * Callback that will be called after clicking on menu item.
+   * Callback that is called after clicking on menu item.
    */
   onItemPress?: DirectEventHandler<undefined>;
 }

@@ -60,7 +60,7 @@ Container view that sets up root menu.
 | ------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `title`       | The menu item's title                                                                                              |
 | `icon`        | Name of [SF Symbol](https://developer.apple.com/sf-symbols/) as string that will be rendered next to item's title. |
-| `onItemClick` | Callback that will be called after clicking on menu item.                                                          |
+| `onItemClick` | Callback that is called after clicking on menu item.                                                               |
 
 ### `MenuBarExtraSeparator`
 
