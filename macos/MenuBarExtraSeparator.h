@@ -1,5 +1,5 @@
-#import <React/UIView+React.h>
 #import "MenuBarItemProtocol.h"
+#import <React/UIView+React.h>
 
 @interface MenuBarExtraSeparator : RCTPlatformView
 

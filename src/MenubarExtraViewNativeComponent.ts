@@ -2,7 +2,7 @@ import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNati
 import type { ViewProps } from 'react-native';
 
 interface NativeProps extends ViewProps {
-  icon?: string;
+  icon: string;
 }
 
 export default codegenNativeComponent<NativeProps>('MenubarExtraView');

@@ -1,22 +1,65 @@
 # react-native-menubar-extra
 
-Add MenuBar to your App
+Easily add native menubar (`NSMenu`) to your React Native MacOS App.
+
+<p align="center">
+  <img src="img/example-usage.png" alt="ViewPager" width="450">
+</p>
 
 ## Installation
 
 ```sh
+yarn add react-native-menubar-extra
+# or ---
 npm install react-native-menubar-extra
+```
+
+```sh
+cd ios && pod install
 ```
 
 ## Usage
 
-```js
-import { MenubarExtraView } from "react-native-menubar-extra";
+```tsx
+import { MenuBarExtraItem, MenubarExtraView } from 'react-native-menubar-extra';
 
-// ...
-
-<MenubarExtraView color="tomato" />
+const MenuBar = () => {
+  return (
+    <MenubarExtraView icon="car">
+      <MenuBarExtraItem
+        title="Item 1"
+        onItemPress={() => {
+          console.log('Item pressed');
+        }}
+      />
+    </MenubarExtraView>
+  );
+};
 ```
+
+## Reference
+
+### `MenuBarExtraView`
+
+Container view that sets up root menu.
+
+| Prop   | Description                                                                                                   |
+| ------ | ------------------------------------------------------------------------------------------------------------- |
+| `icon` | Name of [SF Symbol](https://developer.apple.com/sf-symbols/) as string that will appear in system status bar. |
+
+**Important**: Don't pass other types of components as children as it will break the indexing in the menu.
+
+### `MenuBarExtraItem`
+
+| Prop          | Description                                                                                                        |
+| ------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `title`       | The menu item's                                                                                                    |
+| `icon`        | Name of [SF Symbol](https://developer.apple.com/sf-symbols/) as string that will be rendered next to item's title. |
+| `onItemClick` | Callback that will be called after clicking on menu item.                                                          |
+
+### `MenuBarExtraSeparator`
+
+Separator displayed between items. Needs to have at least one item above and below.
 
 ## Contributing
 

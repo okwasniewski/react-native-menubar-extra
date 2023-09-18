@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import {
   MenuBarExtraItem,
   MenuBarExtraSeparator,
@@ -49,9 +49,7 @@ export default function App() {
     <>
       <MenuBar />
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => {}}>
-          <Text>Increment!</Text>
-        </TouchableOpacity>
+        <Text>Hello!</Text>
       </View>
     </>
   );
@@ -62,10 +60,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
   },
 });

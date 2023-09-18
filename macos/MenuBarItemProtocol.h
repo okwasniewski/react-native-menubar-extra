@@ -2,6 +2,7 @@
 
 @protocol MenuBarItemProtocol <NSObject>
 
+@required
 - (NSMenuItem*) getItem;
 
 @end
