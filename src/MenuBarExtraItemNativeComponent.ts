@@ -3,7 +3,7 @@ import type { ViewProps } from 'react-native';
 import type { DirectEventHandler } from 'react-native/Libraries/Types/CodegenTypes';
 
 interface NativeProps extends ViewProps {
-  title?: string;
+  title: string;
   icon?: string;
   onItemPress?: DirectEventHandler<undefined>;
 }
