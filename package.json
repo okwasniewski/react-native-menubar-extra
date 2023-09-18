@@ -1,7 +1,7 @@
 {
   "name": "react-native-menubar-extra",
   "version": "0.1.0",
-  "description": "Add MenuBar to your App",
+  "description": "Add MenuBar to your React Native App",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -10,17 +10,11 @@
   "files": [
     "src",
     "lib",
-    "android",
     "macos",
     "cpp",
     "*.podspec",
     "!lib/typescript/example",
     "!macos/build",
-    "!android/build",
-    "!android/gradle",
-    "!android/gradlew",
-    "!android/gradlew.bat",
-    "!android/local.properties",
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__",
@@ -33,15 +27,13 @@
     "prepack": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "build:android": "cd example/android && ./gradlew assembleDebug --no-daemon --console=plain -PreactNativeArchitectures=arm64-v8a",
     "build:macos": "cd example/macos && xcodebuild -workspace MenubarExtraExample.xcworkspace -scheme MenubarExtraExample-macOS -configuration Debug CC=clang CPLUSPLUS=clang++ LD=clang LDPLUSPLUS=clang++ GCC_OPTIMIZATION_LEVEL=0 GCC_PRECOMPILE_PREFIX_HEADER=YES ASSETCATALOG_COMPILER_OPTIMIZATION=time DEBUG_INFORMATION_FORMAT=dwarf COMPILER_INDEX_STORE_ENABLE=NO",
     "bootstrap": "yarn example && yarn install && yarn example pods",
-    "clean": "del-cli android/build example/android/build example/android/app/build example/macos/build"
+    "clean": "del-cli example/macos/build"
   },
   "keywords": [
     "react-native",
-    "macos",
-    "android"
+    "macos"
   ],
   "repository": "https://github.com/okwasniewski/react-native-menubar-extra",
   "author": "Oskar Kwaśniewski <oskarkwasniewski@icloud.com> (https://github.com/okwasniewski)",
