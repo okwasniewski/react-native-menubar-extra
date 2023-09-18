@@ -6,6 +6,9 @@ Easily add native menubar (`NSMenu`) to your React Native MacOS App.
   <img src="img/example-usage.png" alt="ViewPager" width="450">
 </p>
 
+> [!WARNING]
+> This library supports only [react-native-macos](https://github.com/microsoft/react-native-macos#readme)
+
 ## Installation
 
 ```sh
@@ -15,7 +18,7 @@ npm install react-native-menubar-extra
 ```
 
 ```sh
-cd ios && pod install
+cd macos && pod install
 ```
 
 ## Usage
@@ -36,6 +39,8 @@ const MenuBar = () => {
   );
 };
 ```
+
+For more advanced example check out the [example](https://github.com/okwasniewski/react-native-menubar-extra/tree/main/example) folder.
 
 ## Reference
 

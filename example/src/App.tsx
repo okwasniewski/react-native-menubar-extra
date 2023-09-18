@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import {
   MenuBarExtraItem,
   MenuBarExtraSeparator,
@@ -47,7 +47,8 @@ const MenuBar = () => {
 export default function App() {
   return (
     <>
-      <MenuBar />
+      {/* Display menu bar only on macOS */}
+      {Platform.OS === 'macos' ? <MenuBar /> : null}
       <View style={styles.container}>
         <Text>Hello!</Text>
       </View>
