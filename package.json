@@ -28,7 +28,7 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "build:macos": "cd example/macos && xcodebuild -workspace MenubarExtraExample.xcworkspace -scheme MenubarExtraExample-macOS -configuration Debug CC=clang CPLUSPLUS=clang++ LD=clang LDPLUSPLUS=clang++ GCC_OPTIMIZATION_LEVEL=0 GCC_PRECOMPILE_PREFIX_HEADER=YES ASSETCATALOG_COMPILER_OPTIMIZATION=time DEBUG_INFORMATION_FORMAT=dwarf COMPILER_INDEX_STORE_ENABLE=NO",
-    "bootstrap": "yarn example && yarn install && yarn example pods",
+    "bootstrap": "yarn example && yarn install",
     "clean": "del-cli example/macos/build"
   },
   "keywords": [
