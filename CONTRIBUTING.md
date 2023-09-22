@@ -12,6 +12,18 @@ To get started with the project, run `yarn` in the root directory to install the
 yarn
 ```
 
+Then go into the `example` folder and run (make sure you have at least Ruby 2.7.0)
+
+```sh
+bundle install
+```
+
+Next inside of `example/macos` run this command to install pods:
+
+```sh
+pod install
+```
+
 > While it's possible to use [`npm`](https://github.com/npm/cli), the tooling is built around [`yarn`](https://classic.yarnpkg.com/), so you'll have an easier time if you use `yarn` for development.
 
 While developing, you can run the [example app](/example/) to test your changes. Any changes you make in your library's JavaScript code will be reflected in the example app without a rebuild. If you change any native code, then you'll need to rebuild the example app.
