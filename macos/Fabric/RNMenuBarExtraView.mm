@@ -61,6 +61,12 @@ using namespace facebook::react;
         [self updateIcon:[NSString stringWithCString:newViewProps.icon.c_str() encoding:[NSString defaultCStringEncoding]]];
     }
     
+    if (oldViewProps.title != newViewProps.title) {
+        if (_statusBarItem.button) {
+            _statusBarItem.button.title = [NSString stringWithCString:newViewProps.title.c_str() encoding:[NSString defaultCStringEncoding]];
+        }
+    }
+    
     [super updateProps:props oldProps:oldProps];
 }
 

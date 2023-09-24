@@ -38,6 +38,11 @@
     if ([changedProps containsObject:@"icon"]) {
         [self updateIcon:self.icon];
     }
+    if ([changedProps containsObject:@"title"]) {
+        if (_statusBarItem.button) {
+            _statusBarItem.button.title = _title;
+        }
+    }
 }
 
 - (void)insertReactSubview:(NSView *)subview atIndex:(NSInteger)atIndex {
