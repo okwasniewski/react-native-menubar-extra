@@ -7,9 +7,13 @@ if (Platform.OS !== 'macos') {
 
 export interface NativeProps extends ViewProps {
   /**
+   * Title that will appear next to icon in system status bar.
+   */
+  title?: string;
+  /**
    * Name of SF Symbol as string that will appear in system status bar.
    */
-  icon: string;
+  icon?: string;
 }
 
 export default codegenNativeComponent<NativeProps>('MenubarExtraView');

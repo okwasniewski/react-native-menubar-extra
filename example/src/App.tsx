@@ -9,7 +9,7 @@ import {
 
 const MenuBar = () => {
   return (
-    <MenubarExtraView icon="car">
+    <MenubarExtraView icon="car" title="Hey!">
       <MenuBarExtraItem
         title="First item"
         icon="paperplane"

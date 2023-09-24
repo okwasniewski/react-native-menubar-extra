@@ -11,6 +11,7 @@
 RCT_EXPORT_MODULE(MenubarExtraView)
 
 RCT_EXPORT_VIEW_PROPERTY(icon, NSString)
+RCT_EXPORT_VIEW_PROPERTY(title, NSString)
 
 - (NSView *)view
 {
