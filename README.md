@@ -48,9 +48,10 @@ For more advanced example check out the [example](https://github.com/okwasniewsk
 
 Container view that sets up root menu.
 
-| Prop   | Description                                                                                                   |
-| ------ | ------------------------------------------------------------------------------------------------------------- |
-| `icon` | Name of [SF Symbol](https://developer.apple.com/sf-symbols/) as string that will appear in system status bar. |
+| Prop    | Description                                                                                                   |
+| ------- | ------------------------------------------------------------------------------------------------------------- |
+| `title` | Title that will appear next to icon in system status bar.                                                     |
+| `icon`  | Name of [SF Symbol](https://developer.apple.com/sf-symbols/) as string that will appear in system status bar. |
 
 **Important**: Don't pass other types of components as children as it will break the indexing in the menu.
 
