@@ -58,12 +58,12 @@ using namespace facebook::react;
     const auto &newViewProps = *std::static_pointer_cast<MenubarExtraViewProps const>(props);
     
     if (oldViewProps.icon != newViewProps.icon) {
-        [self updateIcon:[NSString stringWithCString:newViewProps.icon.c_str() encoding:[NSString defaultCStringEncoding]]];
+        [self updateIcon:[NSString stringWithUTF8String:newViewProps.icon.c_str()]];
     }
     
     if (oldViewProps.title != newViewProps.title) {
         if (_statusBarItem.button) {
-            _statusBarItem.button.title = [NSString stringWithCString:newViewProps.title.c_str() encoding:[NSString defaultCStringEncoding]];
+            _statusBarItem.button.title = [NSString stringWithUTF8String:newViewProps.title.c_str()];
         }
     }
     
