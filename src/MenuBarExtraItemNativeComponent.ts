@@ -1,10 +1,23 @@
 import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
 import { Platform, type ViewProps } from 'react-native';
-import type { DirectEventHandler } from 'react-native/Libraries/Types/CodegenTypes';
+import type {
+  DirectEventHandler,
+  WithDefault,
+} from 'react-native/Libraries/Types/CodegenTypes';
 
 if (Platform.OS !== 'macos') {
   throw new Error('react-native-menubar-extra is only supported on macOS.');
 }
+
+type ModifierKey =
+  | 'CAPS_LOCK'
+  | 'SHIFT'
+  | 'CONTROL'
+  | 'OPTION'
+  | 'COMMAND'
+  | 'NUMERIC_PAD'
+  | 'HELP'
+  | 'FUNCTION';
 
 interface NativeProps extends ViewProps {
   /**
@@ -19,6 +32,15 @@ interface NativeProps extends ViewProps {
    * Callback that is called after clicking on menu item.
    */
   onItemPress?: DirectEventHandler<undefined>;
+  /**
+   * The menu item’s unmodified key equivalent.
+   * For example: "1" or "A".
+   */
+  keyEquivalent?: string;
+  /**
+   * The menu item’s keyboard equivalent modifiers.
+   */
+  keyEquivalentModifierMask?: WithDefault<ModifierKey, 'COMMAND'>;
 }
 
 export default codegenNativeComponent<NativeProps>('MenuBarExtraItemView');

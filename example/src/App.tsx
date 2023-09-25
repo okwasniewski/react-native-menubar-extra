@@ -13,6 +13,8 @@ const MenuBar = () => {
       <MenuBarExtraItem
         title="First item"
         icon="paperplane"
+        keyEquivalent="1"
+        keyEquivalentModifierMask="CONTROL"
         onItemPress={() => {
           console.log('First item');
         }}

@@ -48,14 +48,23 @@ using namespace facebook::react;
     const auto &newViewProps = *std::static_pointer_cast<MenuBarExtraItemViewProps const>(props);
     
     if (oldViewProps.title != newViewProps.title) {
-        _menuItem.title = [NSString stringWithCString:newViewProps.title.c_str() encoding:[NSString defaultCStringEncoding]];
+        _menuItem.title = [NSString stringWithUTF8String:newViewProps.title.c_str()];
     }
     
     if (oldViewProps.icon != newViewProps.icon) {
         if (@available(macOS 11.0, *)) {
-            NSString *iconName = [NSString stringWithCString:newViewProps.icon.c_str() encoding:[NSString defaultCStringEncoding]];
+            NSString *iconName = [NSString stringWithUTF8String:newViewProps.icon.c_str()];
             _menuItem.image = [NSImage imageWithSystemSymbolName:iconName accessibilityDescription:@""];
         }
+    }
+    
+    if (oldViewProps.keyEquivalent != newViewProps.keyEquivalent) {
+        _menuItem.keyEquivalent = [NSString stringWithUTF8String:newViewProps.keyEquivalent.c_str()];
+    }
+    
+    if (oldViewProps.keyEquivalentModifierMask != newViewProps.keyEquivalentModifierMask) {
+        NSEventModifierFlags eventModifierFlags = KeyEquivalentModifierMaskToNSEventModifierFlags(newViewProps.keyEquivalentModifierMask);
+        _menuItem.keyEquivalentModifierMask = eventModifierFlags;
     }
 
     [super updateProps:props oldProps:oldProps];
@@ -93,6 +102,27 @@ using namespace facebook::react;
 
 - (NSMenuItem *)getItem {
     return _menuItem;
+}
+
+NSEventModifierFlags KeyEquivalentModifierMaskToNSEventModifierFlags(MenuBarExtraItemViewKeyEquivalentModifierMask modifierMask) {
+    switch (modifierMask) {
+        case MenuBarExtraItemViewKeyEquivalentModifierMask::COMMAND:
+            return NSEventModifierFlagCommand;
+        case MenuBarExtraItemViewKeyEquivalentModifierMask::CONTROL:
+            return NSEventModifierFlagControl;
+        case MenuBarExtraItemViewKeyEquivalentModifierMask::CAPS_LOCK:
+            return NSEventModifierFlagCapsLock;
+        case MenuBarExtraItemViewKeyEquivalentModifierMask::SHIFT:
+            return NSEventModifierFlagShift;
+        case MenuBarExtraItemViewKeyEquivalentModifierMask::NUMERIC_PAD:
+            return NSEventModifierFlagNumericPad;
+        case MenuBarExtraItemViewKeyEquivalentModifierMask::HELP:
+            return NSEventModifierFlagHelp;
+        case MenuBarExtraItemViewKeyEquivalentModifierMask::FUNCTION:
+            return NSEventModifierFlagFunction;
+        case MenuBarExtraItemViewKeyEquivalentModifierMask::OPTION:
+            return NSEventModifierFlagOption;
+    }
 }
 
 Class<RCTComponentViewProtocol> MenuBarExtraItemViewCls(void)
