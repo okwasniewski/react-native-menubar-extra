@@ -57,11 +57,13 @@ Container view that sets up root menu.
 
 ### `MenuBarExtraItem`
 
-| Prop          | Description                                                                                                        |
-| ------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `title`       | The menu item's title                                                                                              |
-| `icon`        | Name of [SF Symbol](https://developer.apple.com/sf-symbols/) as string that will be rendered next to item's title. |
-| `onItemClick` | Callback that is called after clicking on menu item.                                                               |
+| Prop                        | Description                                                                                                        |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `title`                     | The menu item's title                                                                                              |
+| `icon`                      | Name of [SF Symbol](https://developer.apple.com/sf-symbols/) as string that will be rendered next to item's title. |
+| `onItemClick`               | Callback that is called after clicking on menu item.                                                               |
+| `keyEquivalent`             | The menu item’s unmodified key equivalent. For example: "1" or "A".                                                |
+| `keyEquivalentModifierMask` | The menu item’s keyboard equivalent modifiers. Default: `COMMAND`                                                  |
 
 ### `MenuBarExtraSeparator`
 

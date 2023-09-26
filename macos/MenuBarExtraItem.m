@@ -36,6 +36,12 @@
             _menuItem.image = [NSImage imageWithSystemSymbolName:_icon accessibilityDescription:@""];
         }
     }
+    if ([changedProps containsObject:@"keyEquivalent"]) {
+        _menuItem.keyEquivalent = _keyEquivalent;
+    }
+    if ([changedProps containsObject:@"keyEquivalentModifierMask"]) {
+        _menuItem.keyEquivalentModifierMask = _keyEquivalentModifierMask;
+    }
 }
 
 
