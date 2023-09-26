@@ -14,7 +14,7 @@ const MenuBar = () => {
         title="First item"
         icon="paperplane"
         keyEquivalent="1"
-        keyEquivalentModifierMask="CONTROL"
+        keyEquivalentModifierMask="OPTION"
         onItemPress={() => {
           console.log('First item');
         }}
@@ -32,6 +32,8 @@ const MenuBar = () => {
       <MenuBarExtraItem
         title="Second item"
         icon="eraser"
+        keyEquivalent="2"
+        keyEquivalentModifierMask="SHIFT"
         onItemPress={() => console.log('Second item')}
       />
       <MenuBarExtraSeparator />
