@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "macos": "react-native run-macos",
-    "start": "react-native start"
+    "start": "react-native start",
+    "pods": "pod-install --quiet"
   },
   "dependencies": {
     "react": "18.2.0",
