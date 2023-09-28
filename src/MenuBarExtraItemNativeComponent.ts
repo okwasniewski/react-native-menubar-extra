@@ -19,6 +19,8 @@ type ModifierKey =
   | 'HELP'
   | 'FUNCTION';
 
+type ControlState = 'MIXED' | 'ON' | 'OFF';
+
 interface NativeProps extends ViewProps {
   /**
    * The menu item's title.
@@ -41,6 +43,10 @@ interface NativeProps extends ViewProps {
    * The menu item’s keyboard equivalent modifiers.
    */
   keyEquivalentModifierMask?: WithDefault<ModifierKey, 'COMMAND'>;
+  /**
+   * State of the menu item. If not set, the menu item will be in the MIXED state.
+   */
+  controlState?: WithDefault<ControlState, 'MIXED'>;
 }
 
 export default codegenNativeComponent<NativeProps>('MenuBarExtraItemView');

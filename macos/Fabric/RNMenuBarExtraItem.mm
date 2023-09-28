@@ -66,6 +66,10 @@ using namespace facebook::react;
         NSEventModifierFlags eventModifierFlags = KeyEquivalentModifierMaskToNSEventModifierFlags(newViewProps.keyEquivalentModifierMask);
         _menuItem.keyEquivalentModifierMask = eventModifierFlags;
     }
+    
+    if (oldViewProps.controlState != newViewProps.controlState) {
+        _menuItem.state = ControlStateToNSControlStateValue(newViewProps.controlState);
+    }
 
     [super updateProps:props oldProps:oldProps];
 }
@@ -122,6 +126,17 @@ NSEventModifierFlags KeyEquivalentModifierMaskToNSEventModifierFlags(MenuBarExtr
             return NSEventModifierFlagFunction;
         case MenuBarExtraItemViewKeyEquivalentModifierMask::OPTION:
             return NSEventModifierFlagOption;
+    }
+}
+
+NSControlStateValue ControlStateToNSControlStateValue(MenuBarExtraItemViewControlState controlState) {
+    switch (controlState) {
+        case MenuBarExtraItemViewControlState::MIXED:
+            return NSControlStateValueMixed;
+        case MenuBarExtraItemViewControlState::ON:
+            return NSControlStateValueOn;
+        case MenuBarExtraItemViewControlState::OFF:
+            return NSControlStateValueOff;
     }
 }
 

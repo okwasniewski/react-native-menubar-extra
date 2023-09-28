@@ -15,6 +15,7 @@ const MenuBar = () => {
         icon="paperplane"
         keyEquivalent="1"
         keyEquivalentModifierMask="OPTION"
+        controlState="ON"
         onItemPress={() => {
           console.log('First item');
         }}
@@ -32,6 +33,7 @@ const MenuBar = () => {
       <MenuBarExtraItem
         title="Second item"
         icon="eraser"
+        controlState="ON"
         keyEquivalent="2"
         keyEquivalentModifierMask="SHIFT"
         onItemPress={() => console.log('Second item')}

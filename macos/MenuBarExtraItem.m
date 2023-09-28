@@ -42,6 +42,9 @@
     if ([changedProps containsObject:@"keyEquivalentModifierMask"]) {
         _menuItem.keyEquivalentModifierMask = _keyEquivalentModifierMask;
     }
+    if ([changedProps containsObject:@"controlState"]) {
+        _menuItem.state = _controlState;
+    }
 }
 
 

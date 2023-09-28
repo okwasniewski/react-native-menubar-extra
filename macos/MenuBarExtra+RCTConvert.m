@@ -18,4 +18,14 @@ RCT_ENUM_CONVERTER(
     NSEventModifierFlagCommand,
     unsignedIntegerValue)
 
+RCT_ENUM_CONVERTER(
+    NSControlStateValue,
+    (@{
+      @"ON": @(NSControlStateValueOn),
+      @"OFF": @(NSControlStateValueOff),
+      @"MIXED": @(NSControlStateValueMixed),
+    }),
+    NSControlStateValueMixed,
+    unsignedIntegerValue)
+
 @end
