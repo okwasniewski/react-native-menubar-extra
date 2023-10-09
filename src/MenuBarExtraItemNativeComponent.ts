@@ -1,5 +1,5 @@
 import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
-import { Platform, type ViewProps } from 'react-native';
+import { Platform, type ViewProps, type ImageURISource } from 'react-native';
 import type {
   DirectEventHandler,
   WithDefault,
@@ -47,6 +47,7 @@ interface NativeProps extends ViewProps {
    * State of the menu item. If not set, the menu item will be in the MIXED state.
    */
   controlState?: WithDefault<ControlState, 'MIXED'>;
+  iconImage?: ImageURISource;
 }
 
 export default codegenNativeComponent<NativeProps>('MenuBarExtraItemView');

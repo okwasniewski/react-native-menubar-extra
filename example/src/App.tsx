@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Image, Platform, StyleSheet, Text, View } from 'react-native';
 import {
   MenuBarExtraItem,
   MenuBarExtraSeparator,
@@ -11,8 +11,12 @@ const MenuBar = () => {
   return (
     <MenubarExtraView icon="car" title="Hey!">
       <MenuBarExtraItem
+        iconImage={{
+          uri: 'https://seeklogo.com/images/M/muppet-show-kermit-logo-FA433A893B-seeklogo.com.png',
+          height: 30,
+          width: 30,
+        }}
         title="First item"
-        icon="paperplane"
         keyEquivalent="1"
         keyEquivalentModifierMask="OPTION"
         controlState="ON"
@@ -58,6 +62,12 @@ export default function App() {
       <View style={styles.container}>
         <Text>Hello!</Text>
       </View>
+      <Image
+        style={{ width: 250, height: 250 }}
+        source={{
+          uri: 'https://suelan.github.io/2020/12/24/20201224-How-Image-Loader-and-Cache-work-in-React-Native/ActivityReactNative.jpg',
+        }}
+      />
     </>
   );
 }

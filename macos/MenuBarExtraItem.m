@@ -2,19 +2,24 @@
 
 #import "MenuBarExtraItem.h"
 #import "MenuBarOnPressEvent.h"
+#import <React/RCTImageLoaderWithAttributionProtocol.h>
+#import <React/RCTImageLoader.h>
+#import <React/RCTImageSource.h>
 
 @interface MenuBarExtraItem () <MenuBarItemProtocol>
-@property(nonatomic, strong) id<RCTEventDispatcherProtocol> eventDispatcher;
 @end
 
-@implementation MenuBarExtraItem
+@implementation MenuBarExtraItem {
+    __weak RCTBridge* _bridge;
+    __weak id<RCTImageLoaderWithAttributionProtocol> _imageLoader;
+}
 
-- (instancetype)initWithEventDispatcher:(RCTEventDispatcher *)eventDispatcher {
+- (instancetype)initWithBridge:(RCTBridge *)bridge {
     if (self = [super init]) {
-        _eventDispatcher = eventDispatcher;
         _menuItem = [[NSMenuItem alloc] init];
+        _bridge = bridge;
+        _imageLoader = [_bridge moduleForClass:[RCTImageLoader class]];
     }
-    
     return self;
 }
 
@@ -36,6 +41,17 @@
             _menuItem.image = [NSImage imageWithSystemSymbolName:_icon accessibilityDescription:@""];
         }
     }
+    
+    if ([changedProps containsObject:@"iconImage"]) {
+        __weak typeof(self) weakSelf = self;
+        [_imageLoader loadImageWithURLRequest:_iconImage.request callback:^(NSError * _Nullable error, NSImage * _Nullable image) {
+            if (error) {
+                return;
+            }
+            weakSelf.menuItem.image = image;
+            weakSelf.menuItem.image.size = weakSelf.iconImage.size;
+        }];
+    }
     if ([changedProps containsObject:@"keyEquivalent"]) {
         _menuItem.keyEquivalent = _keyEquivalent;
     }
@@ -49,7 +65,7 @@
 
 
 - (void)handleClick {
-    [_eventDispatcher sendEvent:[[MenuBarOnPressEvent alloc] initWithReactTag:self.reactTag]];
+    [_bridge.eventDispatcher sendEvent:[[MenuBarOnPressEvent alloc] initWithReactTag:self.reactTag]];
 }
 
 - (void)insertReactSubview:(NSView *)subview atIndex:(NSInteger)atIndex {
